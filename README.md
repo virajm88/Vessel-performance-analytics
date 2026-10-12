@@ -1,28 +1,37 @@
-# Capesize Vessel Performance & Fuel Consumption Analysis
+## Key Analysis Results
 
-Independent learning project | October 2026
+This independent learning project analyzes 90 synthetic daily noon reports for a simulated Capesize bulk carrier.
 
-**Data disclaimer:** All vessel characteristics, daily observations, weather effects, and hull degradation are synthetic. This is not a validated naval-architecture model or actual fleet performance data.
+| Performance Indicator | Result |
+|---|---:|
+| Daily reports | 90 |
+| Average fuel consumption | 34.99 tonnes/day |
+| Total observed fuel consumption | 3,148.87 tonnes |
+| Clean-hull, calm-water baseline | 2,909.52 tonnes |
+| Aggregate deviation from baseline | +8.23% |
+| Weather-adjusted deviation, first 15 reports | 0.01% |
+| Weather-adjusted deviation, last 15 reports | 5.60% |
 
-## Run
+The simulated weather-adjusted deviation increased by 5.59 percentage points between the first and last 15 reports. This trend is consistent with the deterioration intentionally introduced into the synthetic dataset; it is not independent evidence of real-world hull fouling.
 
-```bash
-python -m pip install -r requirements.txt
-python analyze.py
-```
+## Performance Visualizations
 
-This creates `noon_reports_synthetic.csv`, `performance_analysis.csv`, `speed_power.png`, `daily_deviation.png`, and `summary.txt`.
+### Speed-Power Relationship
 
-For SQL practice, load `noon_reports_synthetic.csv` into a SQLite table named `noon_reports`, then run `queries.sql`. You can also use the included `load_sqlite.py` to generate the database automatically.
+![Illustrative speed-power relationship](speed_power.png)
 
-## Model
+### Simulated Performance Deterioration
 
-- Illustrative reference: 14 knots, 8,000 kW shaft power.
-- Calm-water power approximation: P = 8000*(V/14)^3, with a draft adjustment.
-- Fuel use: main-engine power (kW) * specific fuel oil consumption (g/kWh) * 24 / 1,000,000 = tonnes/day.
-- Synthetic weather and hull degradation add multipliers to shaft power; auxiliary consumption is a fixed 2 tonnes/day.
-- Simplified example assumptions are not calibrated to any real vessel.
+![Weather-adjusted performance deviation](daily_deviation.png)
 
-## Interpretation caveats
+## Illustrative Financial Scenario
 
-Fuel deviations cannot alone prove hull fouling. Real-world analysis should account for weather, currents, draft/displacement, trim, sensor calibration, engine condition, sea margins and reporting errors. Hull cleaning decisions require technical and economic validation.
+A hypothetical 5.6% fuel-consumption improvement was evaluated using an assumed baseline consumption of 35 tonnes/day and a fuel price of $600 per tonne.
+
+| Metric | Scenario Result |
+|---|---:|
+| Potential fuel reduction | 1.96 tonnes/day |
+| Daily gross fuel-cost savings | $1,176 |
+| Gross savings over 30 operating days | $35,280 |
+
+These are hypothetical scenario outputs, not measured savings or a validated maintenance business case. Maintenance costs, downtime, operating conditions and other commercial factors are excluded.
