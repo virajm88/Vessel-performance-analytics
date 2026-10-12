@@ -1,0 +1,8 @@
+SYNTHETIC EDUCATIONAL DATA - NOT REAL VESSEL MEASUREMENTS
+Number of reports: 90
+Average observed fuel: 34.99 t/day
+Average deviation, first 15 days: 0.01%
+Average deviation, last 15 days: 5.60%
+Deviation change: 5.59 percentage points
+Interpretation: simulated hull deterioration drives part of the increase.
+This model is not sufficient to recommend real-world hull cleaning.
